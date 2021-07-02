@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码测试</title>
+</head>
+<body>
+    <img src="/kaptcha" onclick="this.src='/kaptcha?t='+new Date()*1">
+    <input type="text" maxlength="5" id="code" placeholder="请输入验证码">
+    <input type="button" id="verify" value="验证"> <span id="text"></span>
+</body>
+<script th:src="@{/static/admin/plugins/jquery/jquery.js}"></script>
+<script>
+    $(function (){
+        $("#verify").click(function () {
+            let code = $("#node").val;
+            $.ajax({
+                type:'GET',
+                url:'/verify?code='+code,
+                success: function (data) {
+                    alert(data)
+                    $("#text").html(data)
+                },
+                error:function () {
+                    $("#text").html(data)
+                }
+            });
+        })
+    });
+</script>
+</html>

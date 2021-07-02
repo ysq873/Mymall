@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall_gateway" />
+        <module name="mall_goods_service" />
+        <module name="mall_user" />
+        <module name="mall_order" />
+        <module name="mall_user_service" />
+        <module name="mall_order_service" />
+        <module name="mall_goods" />
+        <module name="mall_config" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mall_backstage" target="1.8" />
+      <module name="mall_config" target="1.8" />
+      <module name="mall_gateway" target="1.8" />
+      <module name="mall_goods" target="1.8" />
+      <module name="mall_goods_service" target="1.8" />
+      <module name="mall_order" target="1.8" />
+      <module name="mall_order_service" target="1.8" />
+      <module name="mall_user" target="1.8" />
+      <module name="mall_user_service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall_backstage" options="-parameters" />
+      <module name="mall_config" options="-parameters" />
+      <module name="mall_gateway" options="-parameters" />
+      <module name="mall_goods" options="-parameters" />
+      <module name="mall_goods_service" options="-parameters" />
+      <module name="mall_order" options="-parameters" />
+      <module name="mall_order_service" options="-parameters" />
+      <module name="mall_user" options="-parameters" />
+      <module name="mall_user_service" options="-parameters" />
+    </option>
+  </component>
+</project>

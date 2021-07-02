@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyyysq.mall_goods_service.dao.MallCarouselMapper">
+    <resultMap id="BaseResultMap" type="com.yyyysq.mall_goods.entity.Carousel">
+        <id column="carousel_id" jdbcType="INTEGER" property="carouselId"/>
+        <result column="carousel_url" jdbcType="VARCHAR" property="carouselUrl"/>
+        <result column="redirect_url" jdbcType="VARCHAR" property="redirectUrl"/>
+        <result column="carousel_rank" jdbcType="INTEGER" property="carouselRank"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="INTEGER" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="INTEGER" property="updateUser"/>
+    </resultMap>
+    <resultMap id="VOResultMap" type="com.yyyysq.mall_goods.entity.Carousel">
+    <id column="carousel_id" jdbcType="INTEGER" property="carouselId"/>
+    <result column="carousel_url" jdbcType="VARCHAR" property="carouselUrl"/>
+    <result column="redirect_url" jdbcType="VARCHAR" property="redirectUrl"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    carousel_id, carousel_url, redirect_url, carousel_rank, is_deleted, create_time,
+    create_user, update_time, update_user
+    </sql>
+    <select id="getCarousels" parameterType="Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_mall_carousel
+        where is_deleted = 0
+        order by carousel_rank desc
+        <if test="start!=null and limit!=null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <select id="getTotalCarousel" resultType="int">
+        select count(*) from tb_mall_carousel where is_deleted = 0
+    </select>
+    <insert id="insertSelective" parameterType="com.yyyysq.mall_goods.entity.Carousel">
+        insert into tb_mall_carousel
+        <trim prefix="(" suffix=")" suffixOverrides=","> <!--trim标签用来处理sql语句，perfix加前缀，suffix加后缀，suffixOverrides去掉最后一个逗号-->
+        <if test="carouselId != null">
+            carousel_id,
+        </if>
+        <if test="carouselUrl != null">
+            carousel_url,
+        </if>
+        <if test="redirectUrl != null">
+            redirect_url,
+        </if>
+        <if test="carouselRank != null">
+            carousel_rank,
+        </if>
+        <if test="isDeleted != null">
+            is_deleted,
+        </if>
+        <if test="createTime != null">
+            create_time,
+        </if>
+        <if test="createUser != null">
+            create_user,
+        </if>
+        <if test="updateTime != null">
+            update_time,
+        </if>
+        <if test="updateUser != null">
+            update_user,
+        </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides=",">
+        <if test="carouselId != null">
+            #{carouselId,jdbcType=INTEGER},
+        </if>
+        <if test="carouselUrl != null">
+            #{carouselUrl,jdbcType=VARCHAR},
+        </if>
+        <if test="redirectUrl != null">
+            #{redirectUrl,jdbcType=VARCHAR},
+        </if>
+        <if test="carouselRank != null">
+            #{carouselRank,jdbcType=INTEGER},
+        </if>
+        <if test="isDeleted != null">
+            #{isDeleted,jdbcType=TINYINT},
+        </if>
+        <if test="createTime != null">
+            #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="createUser != null">
+            #{createUser,jdbcType=INTEGER},
+        </if>
+        <if test="updateTime != null">
+            #{updateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="updateUser != null">
+            #{updateUser,jdbcType=INTEGER},
+        </if>
+    </trim>
+    </insert>
+
+    <update id="deleteBatch">
+        update tb_mall_carousel
+        set is_deleted=1,update_time=now() where carousel_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="getAllCarousels" resultMap = "VOResultMap">
+        select carousel_id, carousel_url, redirect_url
+        from tb_mall_carousel
+    </select>
+
+</mapper>
