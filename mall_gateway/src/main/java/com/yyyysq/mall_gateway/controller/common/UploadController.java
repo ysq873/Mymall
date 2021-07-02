@@ -30,6 +30,7 @@ import java.util.*;
     @RequestMapping(value = "/upload/file", method = RequestMethod.POST)
     @ResponseBody
     public Result upload(@RequestParam("file") MultipartFile file, HttpServletRequest httpServletRequest) throws URISyntaxException {
+	//
         if (file.isEmpty()) {
             return ResultGenerator.genFailResult("文件异常");
         }
