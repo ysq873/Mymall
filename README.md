@@ -1,5 +1,5 @@
 # Mymall
-# 技术栈
+## 技术栈
 | 栏目1 | 栏目2 | 版本 |
 | ------ | ---- | ---- |
 | SpringBoot | 开发框架 | 2.5.0 |
@@ -10,7 +10,7 @@
 | Dubbo | rpc分布式框架 | 2.6.2 |
 | redis | 缓存 | 5.0 |
 
-# 项目截图
+## 项目截图
 ![image](https://user-images.githubusercontent.com/73109419/124280216-feaa5180-db7a-11eb-8540-8b1e9c5b98fb.png)
 ![image](https://user-images.githubusercontent.com/73109419/124300978-bf3b2f80-db91-11eb-89c4-6c0b95b8923c.png)
 ![image](https://user-images.githubusercontent.com/73109419/124301081-e5f96600-db91-11eb-82d2-6962d5e1af0b.png)
